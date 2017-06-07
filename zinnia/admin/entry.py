@@ -199,7 +199,7 @@ class EntryAdmin(admin.ModelAdmin):
         if db_field.name == 'authors':
             kwargs['queryset'] = Author.objects.filter(
                 Q(is_staff=True) | Q(entries__isnull=False)
-                ).distinct()
+            ).distinct()
 
         return super(EntryAdmin, self).formfield_for_manytomany(
             db_field, request, **kwargs)
